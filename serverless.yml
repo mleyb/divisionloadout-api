@@ -1,4 +1,4 @@
-service: divisionloadoutapi
+service: divisionloadout
 
 provider:
   name: aws
@@ -19,7 +19,7 @@ package:
 
 functions:
   api:
-    handler: bin/divisionloadout-api
+    handler: bin/service
     events:
       - http:
           path: /{proxy+}
