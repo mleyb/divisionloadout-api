@@ -11,7 +11,8 @@ func New() *mux.Router {
 
 	handler := handlers.New()
 
-	r.HandleFunc("/loadout", handler.LoadoutHandler).Methods("GET")
+	r.HandleFunc("/build", handler.BuildAllHandler).Methods("GET")
+	r.HandleFunc("/build/{id}", handler.BuildByIdHandler).Methods("GET")
 
 	return r
 }

@@ -30,3 +30,7 @@ func respondWithJSON(w http.ResponseWriter, status int, content interface{}) {
 func respondWithError(w http.ResponseWriter, status int, message string) {
 	respondWithJSON(w, status, map[string]string{"error": message})
 }
+
+func respondWithNotFound(w http.ResponseWriter) {
+	w.WriteHeader(404)
+}
