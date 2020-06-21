@@ -13,7 +13,7 @@ func (handler *Handler) BuildByIdHandler(w http.ResponseWriter, r *http.Request)
 
 	id := vars["id"]
 
-	build, err := data.BuildById(id)
+	build, err := data.BuildGetById(id)
 
 	if err != nil {
 		respondWithError(w, 500, "Internal error")
