@@ -23,6 +23,6 @@ func Delete(id string) error {
 	}
 
 	log.Debugln(resp)
-	
+
 	return nil
 }

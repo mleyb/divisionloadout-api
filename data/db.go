@@ -11,6 +11,6 @@ var db *dynamodb.DynamoDB
 
 func init() {
 	sess := session.Must(session.NewSession())
-	
+
 	db = dynamodb.New(sess)
 }

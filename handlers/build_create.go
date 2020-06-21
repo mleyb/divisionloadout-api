@@ -9,8 +9,8 @@ import (
 
 func (handler *Handler) BuildCreateHandler(w http.ResponseWriter, r *http.Request) {
 	build := &model.Build{}
-	
-	data.Create(build);
+
+	data.Create(build)
 
 	respondWithOk(w)
 }

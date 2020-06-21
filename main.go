@@ -2,20 +2,25 @@ package main
 
 import (
 	"context"
-	"log"
+	"os"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/awslabs/aws-lambda-go-api-proxy/gorillamux"
 	"github.com/mleyb/divisionloadout-api/router"
+
+	gmux "github.com/awslabs/aws-lambda-go-api-proxy/gorillamux"
+	log "github.com/sirupsen/logrus"
 )
 
-var gmuxLambda *gorillamux.GorillaMuxAdapter
+var gmuxLambda *gmux.GorillaMuxAdapter
 
 func init() {
-	log.Println("Lambda cold start - initialising router")
+	log.SetFormatter(&log.JSONFormatter{})
+	log.SetOutput(os.Stdout)
+
+	log.Infoln("Lambda cold start - initialising router")
 	r := router.New()
-	gmuxLambda = gorillamux.New(r)
+	gmuxLambda = gmux.New(r)
 }
 
 // Handler is the lambda handler function
