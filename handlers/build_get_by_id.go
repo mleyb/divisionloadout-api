@@ -3,15 +3,12 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/gorilla/mux"
 	"github.com/mleyb/divisionloadout-api/data"
 )
 
 // BuildGetByIdHandler returns a Build given the Id, or 404 if not found
 func (handler *Handler) BuildGetByIdHandler(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-
-	id := vars["id"]
+	id := getQueryParam(r, "id")
 
 	build, err := data.BuildGetById(id)
 

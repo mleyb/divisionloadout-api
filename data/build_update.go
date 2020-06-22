@@ -5,7 +5,7 @@ import (
 )
 
 // Update updates a build
-func Update(build *model.Build) (*model.Build, error) {
+func Update(id string, build *model.Build) (*model.Build, error) {
 	// TODO
 	return build, nil
 }

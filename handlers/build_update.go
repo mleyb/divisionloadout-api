@@ -8,9 +8,11 @@ import (
 )
 
 func (handler *Handler) BuildUpdateHandler(w http.ResponseWriter, r *http.Request) {
+	id := getQueryParam(r, "id")
+
 	build := &model.Build{}
 
-	_, err := data.Update(build)
+	_, err := data.Update(id, build)
 	if err != nil {
 		respondWithError(w, 500, err.Error())
 	}

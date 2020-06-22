@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"github.com/gorilla/mux"
 )
 
 // Handler defines a requst handler
@@ -13,6 +14,14 @@ type Handler struct {
 func New() *Handler {
 	handler := &Handler{}
 	return handler
+}
+
+func getQueryParam(r *http.Request, name string) string {
+	vars := mux.Vars(r)
+
+	value := vars[name]
+
+	return value
 }
 
 func respondWithJSON(w http.ResponseWriter, status int, content interface{}) {

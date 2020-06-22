@@ -10,22 +10,30 @@ import (
 func New() *mux.Router {
 	r := mux.NewRouter()
 
-	handler := api.New()
+	attachHandlers(r)
 
-	r.HandleFunc("/build", handler.BuildGetAllHandler).Methods("GET")
-	r.HandleFunc("/build/{id}", handler.BuildGetByIdHandler).Methods("GET")
+	setupMiddleware(r)
+	
+	return r
+}
 
-	r.HandleFunc("/build", handler.BuildCreateHandler).Methods("POST")
+func attachHandlers(r *mux.Router) {
+	api := api.New()
 
-	r.HandleFunc("/build", handler.BuildUpdateHandler).Methods("PUT")
+	r.HandleFunc("/build", api.BuildGetAllHandler).Methods("GET")
+	r.HandleFunc("/build/{id}", api.BuildGetByIdHandler).Methods("GET")
 
-	r.HandleFunc("/build/{id}", handler.BuildDeleteHandler).Methods("DELETE")
+	r.HandleFunc("/build", api.BuildCreateHandler).Methods("POST")
 
+	r.HandleFunc("/build/{id}", api.BuildUpdateHandler).Methods("PUT")
+
+	r.HandleFunc("/build/{id}", api.BuildDeleteHandler).Methods("DELETE")
+}
+
+func setupMiddleware(r *mux.Router) {
 	headersOk := handlers.AllowedHeaders([]string{"*"})
 	originsOk := handlers.AllowedOrigins([]string{"*"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"})
 
 	r.Use(handlers.CORS(headersOk, originsOk, methodsOk))
-
-	return r
 }
