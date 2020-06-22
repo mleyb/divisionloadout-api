@@ -28,6 +28,7 @@ func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.API
 	return gmuxLambda.ProxyWithContext(ctx, req)
 }
 
+// The lambda entry popint
 func main() {
 	lambda.Start(Handler)
 }

@@ -42,3 +42,7 @@ func respondWithBadRequest(w http.ResponseWriter) {
 func respondWithNotFound(w http.ResponseWriter) {
 	w.WriteHeader(404)
 }
+
+func respondWithCreated(w http.ResponseWriter, id string) {
+	respondWithJSON(w, 201, map[string]string{"id": id})
+}

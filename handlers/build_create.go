@@ -12,5 +12,5 @@ func (handler *Handler) BuildCreateHandler(w http.ResponseWriter, r *http.Reques
 
 	data.Create(build)
 
-	respondWithOk(w)
+	respondWithCreated(w, build.Buildid)
 }
