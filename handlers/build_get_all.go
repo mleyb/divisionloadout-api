@@ -6,8 +6,8 @@ import (
 	"github.com/mleyb/divisionloadout-api/data"
 )
 
-// BuildAllHandler returns all builds
-func (handler *Handler) BuildAllHandler(w http.ResponseWriter, r *http.Request) {
+// BuildGetAllHandler returns all builds
+func (handler *Handler) BuildGetAllHandler(w http.ResponseWriter, r *http.Request) {
 
 	builds, err := data.BuildGetAll()
 

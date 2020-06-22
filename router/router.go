@@ -12,8 +12,8 @@ func New() *mux.Router {
 
 	handler := api.New()
 
-	r.HandleFunc("/build", handler.BuildAllHandler).Methods("GET")
-	r.HandleFunc("/build/{id}", handler.BuildByIdHandler).Methods("GET")
+	r.HandleFunc("/build", handler.BuildGetAllHandler).Methods("GET")
+	r.HandleFunc("/build/{id}", handler.BuildGetByIdHandler).Methods("GET")
 
 	r.HandleFunc("/build", handler.BuildCreateHandler).Methods("POST")
 
