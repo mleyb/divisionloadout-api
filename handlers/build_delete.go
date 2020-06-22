@@ -8,15 +8,14 @@ import (
 )
 
 // DeleteHandler deletes a build
-func (handler *Handler) DeleteHandler(w http.ResponseWriter, r *http.Request) {
+func (handler *Handler) BuildDeleteHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
 	id := vars["id"]
 
 	err := data.Delete(id)
-
 	if err != nil {
-		respondWithError(w, 500, "Internal error")
+		respondWithError(w, 500, err.Error())
 	}
 
 	respondWithOk(w)

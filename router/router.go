@@ -15,6 +15,12 @@ func New() *mux.Router {
 	r.HandleFunc("/build", handler.BuildAllHandler).Methods("GET")
 	r.HandleFunc("/build/{id}", handler.BuildByIdHandler).Methods("GET")
 
+	r.HandleFunc("/build", handler.BuildCreateHandler).Methods("POST")
+
+	r.HandleFunc("/build", handler.BuildUpdateHandler).Methods("PUT")
+
+	r.HandleFunc("/build/{id}", handler.BuildDeleteHandler).Methods("DELETE")
+
 	headersOk := handlers.AllowedHeaders([]string{"*"})
 	originsOk := handlers.AllowedOrigins([]string{"*"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"})

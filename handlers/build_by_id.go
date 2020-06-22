@@ -16,7 +16,7 @@ func (handler *Handler) BuildByIdHandler(w http.ResponseWriter, r *http.Request)
 	build, err := data.BuildGetById(id)
 
 	if err != nil {
-		respondWithError(w, 500, "Internal error")
+		respondWithError(w, 500, err.Error())
 	}
 
 	if build == nil {

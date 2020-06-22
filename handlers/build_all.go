@@ -12,7 +12,7 @@ func (handler *Handler) BuildAllHandler(w http.ResponseWriter, r *http.Request) 
 	builds, err := data.BuildGetAll()
 
 	if err != nil {
-		respondWithError(w, 500, "Internal error")
+		respondWithError(w, 500, err.Error())
 	}
 
 	respondWithJSON(w, 200, builds)

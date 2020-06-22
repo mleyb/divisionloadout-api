@@ -7,13 +7,13 @@ import (
 	"github.com/mleyb/divisionloadout-api/model"
 )
 
-func (handler *Handler) BuildCreateHandler(w http.ResponseWriter, r *http.Request) {
+func (handler *Handler) BuildUpdateHandler(w http.ResponseWriter, r *http.Request) {
 	build := &model.Build{}
 
-	createdBuild, err := data.Create(build)
+	_, err := data.Update(build)
 	if err != nil {
 		respondWithError(w, 500, err.Error())
 	}
 
-	respondWithCreated(w, createdBuild.Buildid)
+	respondWithOk(w)
 }
