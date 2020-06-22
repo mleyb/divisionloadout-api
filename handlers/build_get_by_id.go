@@ -13,12 +13,12 @@ func (handler *Handler) BuildGetByIdHandler(w http.ResponseWriter, r *http.Reque
 	build, err := data.BuildGetById(id)
 
 	if err != nil {
-		respondWithError(w, 500, err.Error())
+		respondWithError(w, err.Error(), http.StatusInternalServerError)
 	}
 
 	if build == nil {
 		respondWithNotFound(w)
 	}
 
-	respondWithJSON(w, 200, build)
+	respondWithJSON(w, http.StatusOK, build)
 }

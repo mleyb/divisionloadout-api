@@ -36,7 +36,7 @@ func respondWithJSON(w http.ResponseWriter, status int, content interface{}) {
 	w.Write(body)
 }
 
-func respondWithError(w http.ResponseWriter, status int, message string) {
+func respondWithError(w http.ResponseWriter, message string, status int) {
 	respondWithJSON(w, status, map[string]string{"error": message})
 }
 

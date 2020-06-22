@@ -14,7 +14,7 @@ func (handler *Handler) BuildUpdateHandler(w http.ResponseWriter, r *http.Reques
 
 	_, err := data.Update(id, build)
 	if err != nil {
-		respondWithError(w, 500, err.Error())
+		respondWithError(w, err.Error(), http.StatusInternalServerError)
 	}
 
 	respondWithOk(w)

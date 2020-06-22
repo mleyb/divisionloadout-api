@@ -12,7 +12,7 @@ func (handler *Handler) BuildDeleteHandler(w http.ResponseWriter, r *http.Reques
 	
 	err := data.Delete(id)
 	if err != nil {
-		respondWithError(w, 500, err.Error())
+		respondWithError(w, err.Error(), http.StatusInternalServerError)
 	}
 
 	respondWithOk(w)

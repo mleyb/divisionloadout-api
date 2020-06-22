@@ -12,7 +12,7 @@ func (handler *Handler) BuildCreateHandler(w http.ResponseWriter, r *http.Reques
 
 	createdBuild, err := data.Create(build)
 	if err != nil {
-		respondWithError(w, 500, err.Error())
+		respondWithError(w, err.Error(), http.StatusInternalServerError)
 	}
 
 	respondWithCreated(w, createdBuild.Buildid)

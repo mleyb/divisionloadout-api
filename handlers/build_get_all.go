@@ -12,8 +12,8 @@ func (handler *Handler) BuildGetAllHandler(w http.ResponseWriter, r *http.Reques
 	builds, err := data.BuildGetAll()
 
 	if err != nil {
-		respondWithError(w, 500, err.Error())
+		respondWithError(w, err.Error(), http.StatusInternalServerError)
 	}
 
-	respondWithJSON(w, 200, builds)
+	respondWithJSON(w, http.StatusOK, builds)
 }
